@@ -2,6 +2,7 @@ Reflex
 ==========
 
 [![Build Status](https://travis-ci.org/incetro/Reflex.svg?branch=master)](https://travis-ci.org/incetro/Reflex)
+[![CocoaPods](https://img.shields.io/cocoapods/v/Reflex.svg)](https://github.com/incetro/Reflex)
 
 Reflex is a framework written in Swift that makes it easy for you to reflect your swift objects
 
