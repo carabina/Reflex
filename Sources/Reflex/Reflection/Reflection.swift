@@ -11,23 +11,18 @@ import Foundation
 // MARK: - Reflection
 
 /// Reflection model
-
 public class Reflection {
     
     /// Current name
-    
     public let name: String
     
     /// Current value
-    
     public let value: Any
     
     /// Current type
-    
     public let type: ReflectionType
     
     /// Children for the current Reflection
-    
     public var children: [Reflection] = []
     
     /// Standard initializer
@@ -37,7 +32,6 @@ public class Reflection {
     ///   - value: Reflection value
     ///   - type: Reflection type
     ///   - children: Reflection children
-    
     public init(name: String, value: Any, type: ReflectionType, children: [Reflection] = []) {
         
         self.name     = name
@@ -51,16 +45,19 @@ public class Reflection {
 
 public extension Reflection {
     
+    /// The value type of current Reflection
     public var valueType: ReflectionValueType {
         
         return type.valueType
     }
     
+    /// The general type of current Reflection
     public var generalType: ReflectionGeneralType {
         
         return type.generalType
     }
     
+    /// All children types of current Reflection
     public var types: [String] {
         
         return children.map {
@@ -74,6 +71,7 @@ public extension Reflection {
 
 public extension Reflection {
     
+    /// The short name of current Reflection
     public var shortName: String {
         
         return self.name.components(separatedBy: ".").last ?? ""
@@ -87,7 +85,6 @@ public extension Reflection {
     /// Value for the given child name
     ///
     /// - Parameter key: child name
-    
     public subscript (key: String) -> Any? {
         
         let result = children.filter {
@@ -103,7 +100,6 @@ public extension Reflection {
     ///
     /// - Parameter key: child name
     /// - Returns: Found child
-    
     public func children(_ key: String) -> Reflection? {
         
         let result = children.filter {
@@ -119,21 +115,18 @@ public extension Reflection {
     ///
     /// - Parameter key: child name
     /// - Returns: Value with type casting
-    
     public func value<U>(for key: String) -> U? {
         
         return self[key] as? U
     }
     
     /// All children count
-    
     var childrenCount: Int {
         
         return self.children.count
     }
     
     /// Children names
-    
     var names: [String] {
         
         return children.map {
@@ -143,7 +136,6 @@ public extension Reflection {
     }
     
     /// Children values
-    
     var values: [Any] {
         
         return children.map {
@@ -158,7 +150,6 @@ public extension Reflection {
 public extension Reflection {
     
     /// Convert children to dictionary
-    
     public var toDictionary: [String: Any] {
         
         var result: [String: Any] = [:]
@@ -172,7 +163,6 @@ public extension Reflection {
     }
     
     /// Convert children to NSDictionary
-    
     public var toNSDictionary: NSDictionary {
         
         return self.toDictionary as NSDictionary
@@ -182,6 +172,8 @@ public extension Reflection {
 // MARK: - Simple checkers
 
 public extension Reflection {
+    
+    /// Check if object is class
     
     var isClass: Bool {
         
@@ -197,6 +189,8 @@ public extension Reflection {
         }
     }
     
+    /// Check if object is struct
+    
     var isStruct: Bool {
         
         switch type.valueType {
@@ -210,6 +204,8 @@ public extension Reflection {
             return false
         }
     }
+    
+    /// Check if object is enum
     
     var isEnum: Bool {
         
@@ -225,10 +221,14 @@ public extension Reflection {
         }
     }
     
+    /// Check if object is optional
+    
     var isOptional: Bool {
         
         return type.generalType == .optional
     }
+    
+    /// Check if object is array
     
     var isArray: Bool {
         
@@ -244,6 +244,8 @@ public extension Reflection {
         }
     }
     
+    /// Check if object is set
+    
     var isSet: Bool {
         
         switch type.valueType {
@@ -257,6 +259,8 @@ public extension Reflection {
             return false
         }
     }
+    
+    /// Check if object is dictionary
     
     var isDictionary: Bool {
         

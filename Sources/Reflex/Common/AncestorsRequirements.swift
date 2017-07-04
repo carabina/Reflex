@@ -10,6 +10,11 @@ import Foundation
 
 // MARK: - AncestorsRequirements
 
+/// Requirements for getting properties from ancestors
+///
+/// - disabled: Get properties from current class
+/// - all: Get properties from all ancestors
+/// - level: Get properties from the given level
 public enum AncestorsRequirements {
     
     case disabled
