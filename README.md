@@ -15,6 +15,8 @@ Reflex is a framework written in Swift that makes it easy for you to reflect you
 - [x] Reflection with necessary ancestors properties
 - [x] Reflection with all ancestors properties
 - [x] Type checking
+- [ ] Deep type checking
+- [ ] Instant mapping for structures
 
 ## Usage
 
