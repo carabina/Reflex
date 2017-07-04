@@ -13,7 +13,7 @@ matrix:
     - xcode_scheme: Reflex iOS
       language: swift
       env:
-        - XCODE_SDK=iphonesimulator9.3
+        - XCODE_SDK=iphonesimulator10.3
         - XCODE_ACTION="test"
         - XCODE_DESTINATION="platform=iOS Simulator,OS=9.3,name=iPhone SE"
 
